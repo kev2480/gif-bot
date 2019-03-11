@@ -6,6 +6,12 @@ import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
+Vue.filter('pretty', (value) => {
+  if (value) {
+    return JSON.stringify(value, null, 2)
+  }
+})
+
 new Vue({
   router,
   store,
