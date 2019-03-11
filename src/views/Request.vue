@@ -19,6 +19,11 @@
 // @ is an alias to /src
 import axios from 'axios'
 import loadingGif from '../assets/loading.gif'
+const witConfig = {
+  headers: {
+    Authorization: `Bearer ${process.env.VUE_APP_WIT_CLIENT_TOKEN}`,
+  }
+}
 export default {
   name: 'request',
   data: () => {
@@ -41,7 +46,7 @@ export default {
         this.response = null
         this.summary = ''
         // Get wit response
-        const { data } = await axios.get(`${process.env.VUE_APP_API_ROOT}/intent?message=${this.query}`)
+        const { data } = await axios.get(`${process.env.VUE_APP_WIT_API_ROOT}/message?v=20190311&q=${this.query}`, witConfig)
         this.witResponse = data
         if (this.witResponse.entities.intent[0].confidence > 0.75) {
           switch (this.witResponse.entities.intent[0].value) {
