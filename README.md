@@ -1,4 +1,4 @@
-# weather-page-gif-bot-test
+# Gif Bot
 
 ## Project setup
 ```
